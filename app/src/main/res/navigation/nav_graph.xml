@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/initFragment">
+
+    <fragment
+        android:id="@+id/initFragment"
+        android:name="com.example.applicationalternova.modules.initapp.ui.InitFragment"
+        android:label="init_fragment"
+        tools:layout="@layout/init_fragment">
+        <action
+            android:id="@+id/navigate_to_login"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/navigate_to_sing_in"
+            app:destination="@id/singInFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.applicationalternova.modules.login.ui.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_initFragment"
+            app:destination="@id/initFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singInFragment"
+        android:name="com.example.applicationalternova.modules.signin.ui.SingInFragment"
+        android:label="sing_in_fragment"
+        tools:layout="@layout/sing_in_fragment" >
+        <action
+            android:id="@+id/action_singInFragment_to_initFragment"
+            app:destination="@id/initFragment" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lego Store</string>
+    <string name="login_title">Ingresa</string>
+    <string name="login_button_continue_text">Continuar</string>
+    <string name="login_button_loggin">Iniciar sesión</string>
+    <string name="login_button_signin">Crear cuenta </string>
+    <string name="login_hint_user">Usuario o correo </string>
+    <string name="login_hint_password">Contraseña</string>
+    <string name="login_sign_in">¿Todavía no tienes cuenta? Regístrate</string>
+</resources>

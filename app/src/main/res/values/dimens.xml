@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--region text-->
+    <dimen name="text_size_twenty_four">24sp</dimen>
+    <dimen name="text_size_twenty_two">22sp</dimen>
+    <dimen name="text_size_twenty">20sp</dimen>
+    <dimen name="text_size_eighteen">18sp</dimen>
+    <dimen name="text_size_sixteen">16sp</dimen>
+    <dimen name="text_size_fourteen">14sp</dimen>
+    <dimen name="text_size_twelve">12sp</dimen>
+    <dimen name="text_size_ten">10sp</dimen>
+    <dimen name="text_size_eight">8sp</dimen>
+    <!--endregion-->
+
+    <!--region padding -->
+    <dimen name="large_padding">32dp</dimen>
+    <dimen name="x_large_padding">30dp</dimen>
+    <dimen name="xx_large_padding">28dp</dimen>
+    <dimen name="xxx_large_padding">26dp</dimen>
+    <dimen name="xxxl_medium_padding">24dp</dimen>
+    <dimen name="xxl_medium_padding">22dp</dimen>
+    <dimen name="xl_medium_padding">20dp</dimen>
+    <dimen name="l_medium_padding">18dp</dimen>
+    <dimen name="medium_padding">16dp</dimen>
+    <dimen name="x_medium_padding">14dp</dimen>
+    <dimen name="xx_medium_padding">12dp</dimen>
+    <dimen name="xxx_medium_padding">10dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="x_small_padding">6dp</dimen>
+    <dimen name="xx_small_padding">4dp</dimen>
+    <dimen name="xxx_small_padding">2dp</dimen>
+    <!--endregion-->
+
+    <!--region margin -->
+    <dimen name="large_margin_xxx">80dp</dimen>
+    <dimen name="large_margin_forty">40dp</dimen>
+    <dimen name="large_margin_thirty_eight">38dp</dimen>
+    <dimen name="large_margin_thirty_six">36dp</dimen>
+    <dimen name="large_margin_thirty_four">34dp</dimen>
+    <dimen name="large_margin_thirty_two">32dp</dimen>
+    <dimen name="large_margin_thirty">30dp</dimen>
+    <dimen name="large_margin_twenty_eight">28dp</dimen>
+    <dimen name="large_margin_twenty_six">26dp</dimen>
+    <dimen name="medium_margin">24dp</dimen>
+    <dimen name="medium_margin_twenty_two">22dp</dimen>
+    <dimen name="medium_margin_twenty">20dp</dimen>
+    <dimen name="medium_margin_eighteen">18dp</dimen>
+    <dimen name="medium_margin_sixteen">16dp</dimen>
+    <dimen name="medium_margin_fourteen">14dp</dimen>
+    <dimen name="medium_margin_twelve">12dp</dimen>
+    <dimen name="medium_margin_ten">10dp</dimen>
+    <dimen name="small_margin_eight">8dp</dimen>
+    <dimen name="small_margin_six">6dp</dimen>
+    <dimen name="small_margin_four">4dp</dimen>
+    <dimen name="small_margin_two">2dp</dimen>
+    <!--endregion-->
+
+    <!--region radius -->
+    <dimen name="large_radius">32dp</dimen>
+    <dimen name="x_large_radius">30dp</dimen>
+    <dimen name="xx_large_radius">28dp</dimen>
+    <dimen name="xxx_large_radius">26dp</dimen>
+    <dimen name="xxxl_medium_radius">24dp</dimen>
+    <dimen name="xxl_medium_radius">22dp</dimen>
+    <dimen name="xl_medium_radius">20dp</dimen>
+    <dimen name="l_medium_radius">18dp</dimen>
+    <dimen name="medium_radius">16dp</dimen>
+    <dimen name="x_medium_radius">14dp</dimen>
+    <dimen name="xx_medium_radius">12dp</dimen>
+    <dimen name="xxx_medium_radius">10dp</dimen>
+    <dimen name="small_radius">8dp</dimen>
+    <dimen name="x_small_radius">6dp</dimen>
+    <dimen name="xx_small_radius">4dp</dimen>
+    <dimen name="xxx_small_radius">2dp</dimen>
+    <!--endregion-->
+
+</resources>

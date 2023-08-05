@@ -1,4 +1,5 @@
 <resources>
+    <!--region Login-->
     <string name="app_name">Lego Store</string>
     <string name="login_title">Ingresa</string>
     <string name="login_button_continue_text">Continuar</string>
@@ -7,4 +8,20 @@
     <string name="login_hint_user">Usuario o correo </string>
     <string name="login_hint_password">Contraseña</string>
     <string name="login_sign_in">¿Todavía no tienes cuenta? Regístrate</string>
+    <!--endregion-->
+    <!--region Sing In-->
+    <string name="sign_in_form_nickname">Nombre de usuario</string>
+    <string name="sign_in_form_real_name">Nombre completo</string>
+    <string name="sign_in_form_email">Correo electrónico</string>
+    <string name="sign_in_form_password">Contraseña</string>
+    <string name="sign_in_form_repeat_password">Repetir contraseña</string>
+    <string name="sign_in_error_dialog_title">Ha ocurrido un error</string>
+    <string name="sign_in_error_dialog_body">No hemos podido crear tu cuenta, inténtalo de nuevo más tarde</string>
+    <string name="sign_in_error_dialog_positive_action">Aceptar</string>
+    <string name="sign_in_error_mail">El email no es válido</string>
+    <string name="sign_in_error_nickname">Debe contener al menos 6 caracteres</string>
+    <string name="sign_in_error_realname">Debe contener al menos 6 caracteres</string>
+    <string name="sign_in_error_password">Las 2 contraseñas debes ser iguales</string>
+    <!--endregion-->
+
 </resources>

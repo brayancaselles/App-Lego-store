@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "272665710224",
+    "project_id": "alternovaapp",
+    "storage_bucket": "alternovaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272665710224:android:090213474d48f76e3e5215",
+        "android_client_info": {
+          "package_name": "com.example.applicationalternova"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272665710224-amhvqpgo9gfs5sat3ktvgk0940sjo6ec.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNElc88Z9QlxLpEcakBWp_3SNBIFi77Gk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272665710224-amhvqpgo9gfs5sat3ktvgk0940sjo6ec.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,34 +4,154 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.applicationalternova.R
+import com.example.applicationalternova.databinding.SingInFragmentBinding
+import com.example.applicationalternova.modules.common.utils.dismissKeyboard
+import com.example.applicationalternova.modules.common.utils.loseFocusAfterAction
+import com.example.applicationalternova.modules.common.utils.onTextChanged
+import com.example.applicationalternova.modules.signin.model.SignInViewState
+import com.example.applicationalternova.modules.signin.model.UserSignInModel
+import kotlinx.coroutines.launch
 
 class SingInFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SingInFragment()
-    }
+    private var _binding: SingInFragmentBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var viewModel: SingInViewModel
+    private val viewModel: SingInViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.sing_in_fragment, container, false)
+    ): View {
+        _binding = SingInFragmentBinding.inflate(inflater, container, false)
+
+        with(binding) {
+            editTextEmail.loseFocusAfterAction(EditorInfo.IME_ACTION_NEXT)
+            editTextEmail.setOnFocusChangeListener { _, hasFocus -> onFieldChanged(hasFocus) }
+            editTextEmail.onTextChanged { onFieldChanged() }
+
+            editTextNickname.loseFocusAfterAction(EditorInfo.IME_ACTION_NEXT)
+            editTextNickname.setOnFocusChangeListener { _, hasFocus -> onFieldChanged(hasFocus) }
+            editTextNickname.onTextChanged { onFieldChanged() }
+
+            editTextRealName.loseFocusAfterAction(EditorInfo.IME_ACTION_NEXT)
+            editTextRealName.setOnFocusChangeListener { _, hasFocus -> onFieldChanged(hasFocus) }
+            editTextRealName.onTextChanged { onFieldChanged() }
+
+            editTextPassword.loseFocusAfterAction(EditorInfo.IME_ACTION_NEXT)
+            editTextPassword.setOnFocusChangeListener { _, hasFocus -> onFieldChanged(hasFocus) }
+            editTextPassword.onTextChanged { onFieldChanged() }
+
+            editTextRepeatPassword.loseFocusAfterAction(EditorInfo.IME_ACTION_DONE)
+            editTextRepeatPassword.setOnFocusChangeListener { _, hasFocus -> onFieldChanged(hasFocus) }
+            editTextRepeatPassword.onTextChanged { onFieldChanged() }
+
+            buttonCreateAccount.setOnClickListener {
+                it.dismissKeyboard()
+                viewModel.onSignInSelected(
+                    UserSignInModel(
+                        realName = binding.editTextRealName.text.toString(),
+                        nickName = binding.editTextNickname.text.toString(),
+                        email = binding.editTextEmail.text.toString(),
+                        password = binding.editTextPassword.text.toString(),
+                        passwordConfirmation = binding.editTextRepeatPassword.text.toString(),
+                    ),
+                )
+            }
+        }
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SingInViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.navigateToVerifyEmail.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let {
+                goToVerifyEmail()
+            }
+        }
+
+        viewModel.navigateToLogin.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let {
+                goToLogin()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.viewState.collect { viewState ->
+                updateUI(viewState)
+            }
+        }
+
+        viewModel.showErrorDialog.observe(viewLifecycleOwner) { showError ->
+            if (showError) showErrorDialog()
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // _binding = null
+        _binding = null
+    }
+
+    private fun onFieldChanged(hasFocus: Boolean = false) {
+        if (!hasFocus) {
+            viewModel.onFieldsChanged(
+                UserSignInModel(
+                    realName = binding.editTextRealName.text.toString(),
+                    nickName = binding.editTextNickname.text.toString(),
+                    email = binding.editTextEmail.text.toString(),
+                    password = binding.editTextPassword.text.toString(),
+                    passwordConfirmation = binding.editTextRepeatPassword.text.toString(),
+                ),
+            )
+        }
+    }
+
+    private fun goToVerifyEmail() {
+        startActivity(VerificationActivity.create(this))
+    }
+
+    private fun goToLogin() {
+        findNavController().navigate(R.id.action_singInFragment_to_loginFragment)
+    }
+
+    private fun updateUI(viewState: SignInViewState) {
+        with(binding) {
+            pbLoading.isVisible = viewState.isLoading
+            binding.editTextEmail.error =
+                if (viewState.isValidEmail) null else getString(R.string.sign_in_error_mail)
+            binding.editTextNickname.error =
+                if (viewState.isValidNickName) null else getString(R.string.sign_in_error_nickname)
+            binding.editTextRealName.error =
+                if (viewState.isValidRealName) null else getString(R.string.sign_in_error_realname)
+            binding.editTextPassword.error =
+                if (viewState.isValidPassword) null else getString(R.string.sign_in_error_password)
+            binding.editTextRepeatPassword.error =
+                if (viewState.isValidPassword) null else getString(R.string.sign_in_error_password)
+        }
+    }
+
+    private fun showErrorDialog() {
+        val dialog = android.app.AlertDialog.Builder(requireContext())
+            .setTitle(
+                getString(R.string.sign_in_error_dialog_title),
+            )
+            .setMessage(getString(R.string.sign_in_error_dialog_body))
+            .setPositiveButton(getString(R.string.sign_in_error_dialog_positive_action)) { view, _ ->
+                view.dismiss()
+            }.setNegativeButton(android.R.string.cancel) { view, _ ->
+                view.dismiss()
+            }
+            .setCancelable(false)
+            .create()
+        dialog.show()
     }
 }

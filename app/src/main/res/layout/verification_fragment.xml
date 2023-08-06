@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".modules.verification.ui.VerificationFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/view_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/large_margin_forty"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_sing_in" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/xxxl_medium_padding"
+        android:text="@string/verification_check_email"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_twenty"
+        app:layout_constraintBottom_toTopOf="@+id/button_to_home"
+        app:layout_constraintEnd_toEndOf="@+id/view_placeholder"
+        app:layout_constraintStart_toStartOf="@+id/view_placeholder"
+        app:layout_constraintTop_toBottomOf="@+id/view_placeholder" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_to_home"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="@dimen/large_margin_forty"
+        android:text="@string/verification_button_go_to_home"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_message" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@
     <string name="sign_in_form_email">Correo electrónico</string>
     <string name="sign_in_form_password">Contraseña</string>
     <string name="sign_in_form_repeat_password">Repetir contraseña</string>
+    <string name="sign_in_button_create_account">Crear mi cuenta</string>
     <string name="sign_in_error_dialog_title">Ha ocurrido un error</string>
     <string name="sign_in_error_dialog_body">No hemos podido crear tu cuenta, inténtalo de nuevo más tarde</string>
     <string name="sign_in_error_dialog_positive_action">Aceptar</string>
@@ -23,5 +24,7 @@
     <string name="sign_in_error_realname">Debe contener al menos 6 caracteres</string>
     <string name="sign_in_error_password">Las 2 contraseñas debes ser iguales</string>
     <!--endregion-->
+    <string name="verification_check_email">Para acceder a la aplicación verifica tu correo electrónico (recuerda mirar en SPAM).</string>
+    <string name="verification_button_go_to_home">vamos a la tienda</string>
 
 </resources>

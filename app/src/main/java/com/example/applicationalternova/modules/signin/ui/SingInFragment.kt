@@ -116,7 +116,7 @@ class SingInFragment : Fragment() {
     }
 
     private fun goToVerifyEmail() {
-        startActivity(VerificationActivity.create(this))
+        findNavController().navigate(R.id.action_singInFragment_to_verificationFragment)
     }
 
     private fun goToLogin() {

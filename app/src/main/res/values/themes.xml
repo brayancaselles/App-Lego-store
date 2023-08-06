@@ -5,7 +5,10 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.ApplicationAlternova" parent="Base.Theme.ApplicationAlternova" />
+    <style name="Theme.ApplicationAlternova" parent="Base.Theme.ApplicationAlternova" >
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
 
     <!--<style name="Theme.App.Starting" parent="Theme.SplashScreen">
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.applicationalternova.modules.common.firebase.FirebaseAuthManager
 import com.example.applicationalternova.modules.common.utils.Event
 import com.example.applicationalternova.modules.signin.data.SingInDataSource
 import com.example.applicationalternova.modules.signin.data.SingInRepository
@@ -19,7 +20,13 @@ import kotlinx.coroutines.launch
 class SingInViewModel : ViewModel() {
 
     private val interactor: ISingInInteractor =
-        SingInInteractor(repository = SingInRepository(dataSource = SingInDataSource()))
+        SingInInteractor(
+            repository = SingInRepository(
+                dataSource = SingInDataSource(
+                    FirebaseAuthManager(),
+                ),
+            ),
+        )
 
     private companion object {
         const val MIN_PASSWORD_LENGTH = 6
@@ -53,7 +60,7 @@ class SingInViewModel : ViewModel() {
     private fun signInUser(userSignIn: UserSignInModel) {
         viewModelScope.launch {
             _viewState.value = SignInViewState(isLoading = true)
-            val accountCreated = createAccountUseCase(userSignIn)
+            val accountCreated = interactor.createAccount(userSignIn)
             if (accountCreated) {
                 _navigateToVerifyEmail.value = Event(true)
             } else {

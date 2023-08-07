@@ -1,5 +1,6 @@
 package com.example.applicationalternova.modules.verification.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.applicationalternova.R
 import com.example.applicationalternova.databinding.VerificationFragmentBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class VerificationFragment : Fragment() {
 
@@ -34,6 +36,7 @@ class VerificationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.navigateToVerifyAccount.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let {
+                saveData()
                 findNavController().navigate(R.id.action_verificationFragment_to_homeFragment)
             }
         }
@@ -48,5 +51,15 @@ class VerificationFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun saveData() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val sharedPreferences =
+            requireContext().getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("user_uid", currentUser?.uid)
+        editor.putString("user_email", currentUser?.email)
+        editor.apply()
     }
 }

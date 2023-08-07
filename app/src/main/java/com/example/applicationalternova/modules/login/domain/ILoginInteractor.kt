@@ -1,3 +1,8 @@
 package com.example.applicationalternova.modules.login.domain
 
-interface ILoginInteractor
+import com.example.applicationalternova.modules.login.model.LoginResult
+
+interface ILoginInteractor {
+
+    suspend fun login(email: String, password: String): LoginResult
+}

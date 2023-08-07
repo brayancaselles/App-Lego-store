@@ -14,4 +14,6 @@ class FirebaseAuthManager() {
     fun getUserId(): String = auth.currentUser?.uid.toString()
 
     fun getEmailUser(): String = auth.currentUser?.email.orEmpty()
+
+    val token = auth.currentUser
 }

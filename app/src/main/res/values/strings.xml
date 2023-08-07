@@ -8,6 +8,10 @@
     <string name="login_hint_user">Usuario o correo </string>
     <string name="login_hint_password">Contraseña</string>
     <string name="login_sign_in">¿Todavía no tienes cuenta? Regístrate</string>
+    <string name="login_error_email">El email no es válido</string>
+    <string name="login_error_password">Debe contener al menos 6 caracteres</string>
+    <string name="login_error_dialog_title">No hemos encontrado el usuario</string>
+    <string name="login_error_dialog_message">Verifique los datos o vuelva a intentarlo</string>
     <!--endregion-->
     <!--region Sing In-->
     <string name="sign_in_form_nickname">Nombre de usuario</string>
@@ -17,6 +21,7 @@
     <string name="sign_in_form_repeat_password">Repetir contraseña</string>
     <string name="sign_in_button_create_account">Crear mi cuenta</string>
     <string name="sign_in_error_dialog_title">Ha ocurrido un error</string>
+    <string name="sign_in_error_dialog_message">El correo electrónico ya está registrado.</string>
     <string name="sign_in_error_dialog_body">No hemos podido crear tu cuenta, inténtalo de nuevo más tarde</string>
     <string name="sign_in_error_dialog_positive_action">Aceptar</string>
     <string name="sign_in_error_mail">El email no es válido</string>
@@ -24,7 +29,12 @@
     <string name="sign_in_error_realname">Debe contener al menos 6 caracteres</string>
     <string name="sign_in_error_password">Las 2 contraseñas debes ser iguales</string>
     <!--endregion-->
+    <!--region Verification-->
     <string name="verification_check_email">Para acceder a la aplicación verifica tu correo electrónico (recuerda mirar en SPAM).</string>
-    <string name="verification_button_go_to_home">vamos a la tienda</string>
+    <string name="verification_button_go_to_home">Ingresar a la tienda</string>
+    <!--endregion-->
+    <string name="home_message_welcome">Bienvenido %s</string>
+    <string name="home_price">$ %s</string>
+    <string name="home_log_out">Cerrar sesión</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.applicationalternova.modules.signin.ui
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -37,16 +38,17 @@ class SingInViewModel : ViewModel() {
         get() = _navigateToLogin
 
     private val _navigateToVerifyEmail = MutableLiveData<Event<Boolean>>()
-    val navigateToVerifyEmail: LiveData<Event<Boolean>>
-        get() = _navigateToVerifyEmail
+    val navigateToVerifyEmail: LiveData<Event<Boolean>> get() = _navigateToVerifyEmail
 
     private val _viewState = MutableStateFlow(SignInViewState())
     val viewState: StateFlow<SignInViewState>
         get() = _viewState
 
     private var _showErrorDialog = MutableLiveData(false)
-    val showErrorDialog: LiveData<Boolean>
-        get() = _showErrorDialog
+    val showErrorDialog: LiveData<Boolean> get() = _showErrorDialog
+
+    private var _showExitsEmail = MutableLiveData(false)
+    val showExitsEmail: LiveData<Boolean> get() = _showExitsEmail
 
     fun onSignInSelected(userSignIn: UserSignInModel) {
         val viewState = userSignIn.toSignInViewState()
@@ -59,23 +61,24 @@ class SingInViewModel : ViewModel() {
 
     private fun signInUser(userSignIn: UserSignInModel) {
         viewModelScope.launch {
-            _viewState.value = SignInViewState(isLoading = true)
-            val accountCreated = interactor.createAccount(userSignIn)
-            if (accountCreated) {
-                _navigateToVerifyEmail.value = Event(true)
-            } else {
-                _showErrorDialog.value = true
+            try {
+                _viewState.value = SignInViewState(isLoading = true)
+                val accountCreated = interactor.createAccount(userSignIn)
+                Log.d("tag-----------","$accountCreated")
+                if (accountCreated) {
+                    _navigateToVerifyEmail.value = Event(true)
+                } else {
+                    _showErrorDialog.value = true
+                }
+                _viewState.value = SignInViewState(isLoading = false)
+            } catch (e: Exception) {
+                _showExitsEmail.value = true
             }
-            _viewState.value = SignInViewState(isLoading = false)
         }
     }
 
     fun onFieldsChanged(userSignIn: UserSignInModel) {
         _viewState.value = userSignIn.toSignInViewState()
-    }
-
-    fun onLoginSelected() {
-        _navigateToLogin.value = Event(true)
     }
 
     private fun isValidOrEmptyEmail(email: String) =

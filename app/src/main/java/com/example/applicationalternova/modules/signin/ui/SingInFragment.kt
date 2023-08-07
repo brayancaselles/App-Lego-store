@@ -92,7 +92,21 @@ class SingInFragment : Fragment() {
         }
 
         viewModel.showErrorDialog.observe(viewLifecycleOwner) { showError ->
-            if (showError) showErrorDialog()
+            if (showError) {
+                showErrorDialog(
+                    getString(R.string.sign_in_error_dialog_title),
+                    getString(R.string.sign_in_error_dialog_body),
+                )
+            }
+        }
+
+        viewModel.showExitsEmail.observe(viewLifecycleOwner) {
+            if (it) {
+                showErrorDialog(
+                    getString(R.string.sign_in_error_dialog_title),
+                    getString(R.string.sign_in_error_dialog_message),
+                )
+            }
         }
     }
 
@@ -139,14 +153,13 @@ class SingInFragment : Fragment() {
         }
     }
 
-    private fun showErrorDialog() {
+    private fun showErrorDialog(title: String, message: String) {
         val dialog = android.app.AlertDialog.Builder(requireContext())
-            .setTitle(
-                getString(R.string.sign_in_error_dialog_title),
-            )
-            .setMessage(getString(R.string.sign_in_error_dialog_body))
+            .setTitle(title)
+            .setMessage(message)
             .setPositiveButton(getString(R.string.sign_in_error_dialog_positive_action)) { view, _ ->
                 view.dismiss()
+                findNavController().popBackStack()
             }.setNegativeButton(android.R.string.cancel) { view, _ ->
                 view.dismiss()
             }

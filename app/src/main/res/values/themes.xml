@@ -29,6 +29,16 @@
         <item name="backgroundTint">@color/color_three_selective_yellow</item>
     </style>
 
+    <style name="ButtonTwo" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">12sp</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="backgroundTint">@color/color_primary_red</item>
+    </style>
+
     <style name="FormTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="android:gravity">center_vertical</item>
         <item name="errorEnabled">true</item>

@@ -1,3 +1,10 @@
 package com.example.applicationalternova.modules.login.domain
 
-class LoginInteractor(private val repository: ILoginRepository) : ILoginInteractor
+import com.example.applicationalternova.modules.login.model.LoginResult
+
+class LoginInteractor(private val repository: ILoginRepository) : ILoginInteractor {
+
+    override suspend fun login(email: String, password: String): LoginResult {
+        return repository.login(email, password)
+    }
+}

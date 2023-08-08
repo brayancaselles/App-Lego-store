@@ -4,13 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.applicationalternova.R
 import com.example.applicationalternova.databinding.ProductItemBinding
+import com.example.applicationalternova.modules.home.model.ClickOptional
 import com.example.applicationalternova.modules.home.model.ProductModel
 
-class ProductAdapter(private val onclick: (ProductModel) -> Unit) :
+class ProductAdapter(private val onclick: (Triple<ProductModel, Boolean, ClickOptional>) -> Unit) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     private var productsList: List<ProductModel> = listOf()
@@ -29,7 +29,7 @@ class ProductAdapter(private val onclick: (ProductModel) -> Unit) :
 
     class ProductViewHolder(
         private val binding: ProductItemBinding,
-        private val onclick: (ProductModel) -> Unit,
+        private val onclick: (Triple<ProductModel, Boolean, ClickOptional>) -> Unit,
         private val context: Context,
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -37,7 +37,16 @@ class ProductAdapter(private val onclick: (ProductModel) -> Unit) :
 
         init {
             binding.containerProduct.setOnClickListener {
-                onclick(item)
+                onclick(Triple(item, binding.checkboxAddToCar.isChecked, ClickOptional.IS_CLICK))
+            }
+            binding.checkboxAddToCar.setOnCheckedChangeListener { _, _ ->
+                onclick(
+                    Triple(
+                        item,
+                        binding.checkboxAddToCar.isChecked,
+                        ClickOptional.IS_CHECK_ADD_CAR,
+                    ),
+                )
             }
         }
 

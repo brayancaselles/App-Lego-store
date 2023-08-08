@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/initFragment">
+    app:startDestination="@id/mediatorFragment">
 
     <fragment
         android:id="@+id/initFragment"
@@ -55,7 +55,7 @@
         android:id="@+id/verificationFragment"
         android:name="com.example.applicationalternova.modules.verification.ui.VerificationFragment"
         android:label="verification_fragment"
-        tools:layout="@layout/verification_fragment" >
+        tools:layout="@layout/verification_fragment">
         <action
             android:id="@+id/action_verificationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -64,6 +64,34 @@
         android:id="@+id/homeFragment"
         android:name="com.example.applicationalternova.modules.home.ui.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_shoppingCartFragment"
+            app:destination="@id/shoppingCartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_initFragment"
+            app:destination="@id/initFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProductFragment"
+        android:name="com.example.applicationalternova.modules.detail.ui.DetailProductFragment"
+        android:label="detail_product_fragment"
+        tools:layout="@layout/detail_product_fragment">
+        <action
+            android:id="@+id/action_detailProductFragment_to_shoppingCartFragment"
+            app:destination="@id/shoppingCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.example.applicationalternova.modules.shoppingCart.ShoppingCartFragment"
+        android:label="shopping_cart_fragment"
+        tools:layout="@layout/shopping_cart_fragment" />
+    <fragment
+        android:id="@+id/mediatorFragment"
+        android:name="com.example.applicationalternova.modules.initapp.ui.MediatorFragment"
+        android:label="MediatorFragment" />
 
 </navigation>

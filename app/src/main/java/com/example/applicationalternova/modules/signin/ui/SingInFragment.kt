@@ -1,6 +1,9 @@
 package com.example.applicationalternova.modules.signin.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -139,7 +142,7 @@ class SingInFragment : Fragment() {
 
     private fun updateUI(viewState: SignInViewState) {
         with(binding) {
-            pbLoading.isVisible = viewState.isLoading
+            progressBarLoading.isVisible = viewState.isLoading
             binding.editTextEmail.error =
                 if (viewState.isValidEmail) null else getString(R.string.sign_in_error_mail)
             binding.editTextNickname.error =

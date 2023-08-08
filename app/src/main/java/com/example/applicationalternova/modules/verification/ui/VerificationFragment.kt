@@ -1,7 +1,9 @@
 package com.example.applicationalternova.modules.verification.ui
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +38,7 @@ class VerificationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.navigateToVerifyAccount.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let {
-                saveData()
+                saveSessionPreferences()
                 findNavController().navigate(R.id.action_verificationFragment_to_homeFragment)
             }
         }
@@ -53,13 +55,12 @@ class VerificationFragment : Fragment() {
         _binding = null
     }
 
-    private fun saveData() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        val sharedPreferences =
-            requireContext().getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+    private fun saveSessionPreferences() {
+        val sharedPreferences: SharedPreferences =
+            requireContext().getSharedPreferences("sesion", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putString("user_uid", currentUser?.uid)
-        editor.putString("user_email", currentUser?.email)
+        editor.putBoolean("active", true)
         editor.apply()
+        Log.d("SAVE", "SAVE session")
     }
 }

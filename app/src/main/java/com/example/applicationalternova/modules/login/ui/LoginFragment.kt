@@ -1,7 +1,9 @@
 package com.example.applicationalternova.modules.login.ui
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +15,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.applicationalternova.R
 import com.example.applicationalternova.databinding.LoginFragmentBinding
-import com.example.applicationalternova.modules.login.model.LoginViewState
 import com.example.applicationalternova.modules.common.utils.dismissKeyboard
 import com.example.applicationalternova.modules.common.utils.loseFocusAfterAction
 import com.example.applicationalternova.modules.common.utils.onTextChanged
+import com.example.applicationalternova.modules.login.model.LoginViewState
 import com.example.applicationalternova.modules.login.model.UserLoginModel
-import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
 
@@ -124,7 +125,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun goToHome() {
-        saveData()
+        saveSessionPreferences()
         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
     }
 
@@ -142,13 +143,12 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun saveData() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        val sharedPreferences =
-            requireContext().getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+    private fun saveSessionPreferences() {
+        val sharedPreferences: SharedPreferences =
+            requireContext().getSharedPreferences("sesion", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putString("user_uid", currentUser?.uid)
-        editor.putString("user_email", currentUser?.email)
+        editor.putBoolean("active", true)
         editor.apply()
+        Log.d("SAVE", "SAVE session")
     }
 }

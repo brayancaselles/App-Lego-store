@@ -28,13 +28,28 @@
     <string name="sign_in_error_nickname">Debe contener al menos 6 caracteres</string>
     <string name="sign_in_error_realname">Debe contener al menos 6 caracteres</string>
     <string name="sign_in_error_password">Las 2 contraseñas debes ser iguales</string>
+    <string name="sign_in_error_general">Ha ocurrido un erro intentelo de nuevo mas tarde</string>
     <!--endregion-->
     <!--region Verification-->
     <string name="verification_check_email">Para acceder a la aplicación verifica tu correo electrónico (recuerda mirar en SPAM).</string>
     <string name="verification_button_go_to_home">Ingresar a la tienda</string>
     <!--endregion-->
+    <!--region Home-->
     <string name="home_message_welcome">Bienvenido %s</string>
     <string name="home_price">$ %s</string>
     <string name="home_log_out">Cerrar sesión</string>
+    <string name="home_add_to_car">Añadir al carro</string>
+    <!--endregion-->
+    <!--region Detail-->
+    <string name="detail_button_buy">Comprar</string>
+    <string name="detail_button_add_to_cart">Agregar al carrito</string>
+    <string name="detail_description_product">Descripción</string>
+    <string name="detail_stock_product">Disponible: %s</string>
+    <string name="detail_stock_product_title">Upps!!</string>
+    <string name="detail_price">Precio: %s</string>
+    <string name="detail_stock_product_message">Lo sentimos nos tenemos mas unidades disponibles.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--endregion-->
 
 </resources>

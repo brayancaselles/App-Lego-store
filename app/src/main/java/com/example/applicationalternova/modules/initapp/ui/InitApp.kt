@@ -1,7 +1,10 @@
 package com.example.applicationalternova.modules.initapp.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import com.example.applicationalternova.R
 import com.example.applicationalternova.databinding.InitAppActivityBinding
 import com.google.firebase.auth.FirebaseUser
 
@@ -14,19 +17,27 @@ class InitApp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = InitAppActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        /*token = FirebaseAuthManager().token
 
-        if (token != null) {
-            navigateToHome()
-        }*/
+        val preferencias = getSharedPreferences("sesion", Context.MODE_PRIVATE)
+
+        val destination: Int = if (preferencias.getBoolean("active", false)) {
+            R.id.homeFragment
+        } else {
+            R.id.initFragment
+        }
+
+        setupNavigation(destination)
     }
 
-    /*private fun navigateToHome() {
-        val fragment = HomeFragment()
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.homeFragment, fragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
-    }*/
+    private fun setupNavigation(destination: Int) {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val graphInflater = navHostFragment.navController.navInflater
+        val navGraph = graphInflater.inflate(R.navigation.nav_graph)
+        val navController = navHostFragment.navController
+
+        navGraph.setStartDestination(destination)
+        navController.graph = navGraph
+        navController.navigate(destination)
+    }
 }

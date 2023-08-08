@@ -1,9 +1,12 @@
 package com.example.applicationalternova.modules.signin.data
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import com.example.applicationalternova.modules.common.firebase.FirebaseAuthManager
 import com.example.applicationalternova.modules.signin.model.UserSignInModel
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.gson.Gson
 import kotlinx.coroutines.tasks.await
 
 class SingInDataSource(private val firebase: FirebaseAuthManager) : ISingInDataSource {

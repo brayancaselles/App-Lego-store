@@ -50,11 +50,7 @@ class HomeViewModel : ViewModel() {
 
     private fun loadName() {
         viewModelScope.launch {
-            try {
-                _userName.update { currentState -> currentState.copy(userName = interactor.getNameUser()) }
-            } catch (e: Exception) {
-                _error.update { currentState -> currentState.copy(error = e) }
-            }
+            _userName.update { currentState -> currentState.copy(userName = interactor.getNameUser()) }
         }
     }
 }

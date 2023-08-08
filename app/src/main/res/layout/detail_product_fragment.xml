@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/medium_margin_twenty"
+    tools:context=".modules.detail.ui.DetailProductFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_name_product"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_eighteen"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/image_view_product"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Base Gris" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_view_product"
+                android:layout_width="0dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="@dimen/medium_margin_twenty"
+                android:src="@drawable/image_default"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_name_product" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin_ten"
+                android:textSize="@dimen/text_size_twenty"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_product"
+                tools:text="$ 250" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_stock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin_ten"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_price"
+                tools:text="Cantidad: 1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_buy"
+                style="@style/Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/medium_margin_twenty"
+                android:layout_marginEnd="@dimen/small_margin_eight"
+                android:text="@string/detail_button_buy"
+                app:layout_constraintEnd_toStartOf="@+id/button_add_to_cart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_stock" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_add_to_cart"
+                style="@style/Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_margin_eight"
+                android:text="@string/detail_button_add_to_cart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_buy"
+                app:layout_constraintTop_toTopOf="@+id/button_buy" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_title_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin_twenty"
+                android:text="@string/detail_description_product"
+                android:textSize="@dimen/text_size_eighteen"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/button_buy"
+                app:layout_constraintTop_toBottomOf="@+id/button_buy" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin_ten"
+                android:lineSpacingExtra="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_view_title_description"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_title_description"
+                tools:text="¡Prepara el terreno para el juego libre y creativo con la Base Gris LEGO® Classic (11024)!" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/button_shopping_car"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/color_three_selective_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/xx_small_padding">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_number_stock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/icon_shopping_cart"
+                android:gravity="center"
+                android:textStyle="bold"
+                tools:text="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
